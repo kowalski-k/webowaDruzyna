@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 
 app = Flask(__name__)
 
@@ -6,6 +7,11 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return "Tutaj będzie najlepsza ankieta świata"
+
+
+@app.route('/env')
+def check_env_variables():
+    return str(os.environ)
 
 
 if __name__ == "__main__":
