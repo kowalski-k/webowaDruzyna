@@ -1,0 +1,35 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - webowa-druzynka
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: https://flashhealacr.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_1f4a478079494c94a35f03d47824c1a3 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_1813472b3406493eaa0c5b8e4634c68d }}
+
+    - run: |
+        docker build . -t flashhealacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1f4a478079494c94a35f03d47824c1a3 }}/webowa-druzynka:${{ github.sha }}
+        docker push flashhealacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1f4a478079494c94a35f03d47824c1a3 }}/webowa-druzynka:${{ github.sha }}
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'webowa-druzynka'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a30f34d5050942cd8ce0a61551e049d6 }}
+        images: 'flashhealacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1f4a478079494c94a35f03d47824c1a3 }}/webowa-druzynka:${{ github.sha }}'
