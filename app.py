@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 
 app = Flask(__name__)
@@ -14,9 +14,9 @@ def check_env_variables():
     return str(os.environ)
 
 
-@app.route('/przyklad')
-def jakas_przyklad():
-    return "Potrzeba backendowca"
+@app.route('/base')
+def base():
+    return render_template("base.html")
 
 
 if __name__ == "__main__":
