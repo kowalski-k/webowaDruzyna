@@ -12,12 +12,30 @@
   html {
     font-size: 62.5%;
   }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .background {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgba(197, 196, 196, 0.4), rgba(255, 255, 255, 0.4)),rgb(255, 255, 255);
+    background-size: cover;
+  }
 /* End of Common */
+
+
 
 /* Section 1 */
 .section-1 {
     width: 100%;
-    height: 20vh;
+    height: 8rem;
     position: relative;
   }
   
@@ -25,7 +43,7 @@
     width: 100%;
     height: 8rem;
     display: flex;
-    justify-content: center;
+    position: relative;
   }
 
   .navbar {
@@ -52,20 +70,66 @@
   }
 
   .nav-link{
-    font-size: 3rem;
-    color: rgb(54, 54, 54);
+    font-size: 2rem;
+    color: #0E2E42;
   }
 /* End of Section 1 */
 
+.sections-wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 /* Section 2 */
 .section-2{
     width: 100%;
-    height: 75vh;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 /* End of Section 2 */
+
+/* Section 3 */
+.section-3{
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-3-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-3-paragraph{
+  font-size: 2rem;
+}
+
+.section-3-btn{
+  width: 20rem;
+  color: #0E2E42;
+  background-color: transparent;
+  padding: .7rem;
+  margin: 2rem;
+  border-radius: 3rem;
+  border: .1rem solid #0E2E42;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.section-3-btn a{
+  color: #0E2E42;
+}
+
+.section-3-btn:hover{
+  transform: scale(1.2);
+}
+/* End of Section 3 */
 
 /* Footer */
 .footer{
@@ -77,5 +141,8 @@
 
 .copyright{
     font-size: 2rem;
+    color: #0E2E42;
+    position: absolute;
+    bottom: 2rem;
 }
 /* End of Footer */
