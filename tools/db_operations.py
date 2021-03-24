@@ -15,8 +15,12 @@ port = config_object['SETUP']['port']
 
 class DBOperations():
 
-    def get_all_table(self):
-        conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT='+port+';DATABASE='+database+';UID='+username+';PWD='+ password)
+    def connection(self):
+        connection = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server + ';PORT=' + port + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+        return connection
+
+    def get_all_answers(self):
+        conn = self.connection()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM dbo.qna;")
         rows = cursor.fetchall()
@@ -24,23 +28,15 @@ class DBOperations():
         return rows
 
     def add_answer(self, question, answer):
-        conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT='+port+';DATABASE='+database+';UID='+username+';PWD='+ password)
+        conn = self.connection()
         cursor = conn.cursor()
         cursor.execute(("INSERT INTO dbo.qna VALUES(?, ?);"), (question, answer))
         conn.commit()
         conn.close()
 
     def delete_answer(self, question_id):
-        conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT='+port+';DATABASE='+database+';UID='+username+';PWD='+ password)
+        conn = self.connection()
         cursor = conn.cursor()
         cursor.execute(("DELETE FROM dbo.qna WHERE QuestionID=?;"), question_id)
         conn.commit()
         conn.close()
-
-
-
-
-
-example = DBOperations()
-example.delete_answer(1)
-print(example.get_all_table())
