@@ -48,8 +48,4 @@ class DBOperations():
         cursor.execute(("DELETE FROM dbo.answers WHERE AnswerID=?;"), answer_id)
         conn.commit()
         conn.close()
-
-
-ax = DBOperations()
-print(ax.get_all_questions())
-print(ax.get_all_answers())
+        
