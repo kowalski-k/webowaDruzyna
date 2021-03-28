@@ -1,0 +1,35 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - biomedqna
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: https://biomedqna.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_b618f320c0d8404f964db866c3fd38e3 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_6f3ce515694343f8bb3b89f21e5756df }}
+
+    - run: |
+        docker build . -t biomedqna.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b618f320c0d8404f964db866c3fd38e3 }}/biomedqna:${{ github.sha }}
+        docker push biomedqna.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b618f320c0d8404f964db866c3fd38e3 }}/biomedqna:${{ github.sha }}
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'biomedqna'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_43baeebefa8b4e26878e8ae04d9a8e91 }}
+        images: 'biomedqna.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b618f320c0d8404f964db866c3fd38e3 }}/biomedqna:${{ github.sha }}'
