@@ -19,24 +19,33 @@ class DBOperations():
         connection = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server + ';PORT=' + port + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
         return connection
 
+    def get_all_questions(self):
+        conn = self.connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM dbo.questions;")
+        table = cursor.fetchall()
+        conn.close()
+        return table
+
     def get_all_answers(self):
         conn = self.connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM dbo.qna;")
-        rows = cursor.fetchall()
+        cursor.execute("SELECT * FROM dbo.answers;")
+        table = cursor.fetchall()
         conn.close()
-        return rows
+        return table
 
-    def add_answer(self, question, answer):
+    def add_answer(self, question_id, answer):
         conn = self.connection()
         cursor = conn.cursor()
-        cursor.execute(("INSERT INTO dbo.qna VALUES(?, ?);"), (question, answer))
+        cursor.execute(("INSERT INTO dbo.answers VALUES(?, ?);"), (question_id, answer))
         conn.commit()
         conn.close()
 
-    def delete_answer(self, question_id):
+    def delete_answer(self, answer_id):
         conn = self.connection()
         cursor = conn.cursor()
-        cursor.execute(("DELETE FROM dbo.qna WHERE QuestionID=?;"), question_id)
+        cursor.execute(("DELETE FROM dbo.answers WHERE AnswerID=?;"), answer_id)
         conn.commit()
         conn.close()
+        
