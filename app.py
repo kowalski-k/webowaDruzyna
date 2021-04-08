@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 import os
+from tools import db_operations
 
 app = Flask(__name__)
+db_handler = db_operations.DBOperations()
 
 
 @app.route('/')
@@ -22,7 +24,13 @@ def creators():
 
 @app.route('/form.html')
 def form():
-    return render_template("form.html")
+    request_data = {}
+    question_id_begging = "question"
+    for i, row in enumerate(db_handler.get_all_questions()):
+        question = row[1]
+        question_id = question_id_begging + str(i+1)
+        request_data[question_id] = question
+    return render_template("form.html", **request_data)
 
 
 if __name__ == "__main__":
