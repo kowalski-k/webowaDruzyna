@@ -34,38 +34,12 @@ def form_results1():
     }
 
 
-def get_form_source2():
-    # Dane z SQL
-    # Na podstawie tego stworzyć formularz z podanymi pytaniami i odpowiedziami, po zatwierdzeniu wysłać
-    return [
-        {
-            "question_id": 1,
-            "question_text": "Czy poleciłbyś Inżynierię Biomedyczną koledze?",
-            "possible_answers": ["Tak", "Nie", "Nie wiem", "ŻŹĆŃĄĘŁÓ"]
-        },
-        {
-            "question_id": 0,
-            "question_text": "Jak bardzo coś tam...",
-            "possible_answers": [1, 2, 3, 4, 5]
-        }
-    ]
-
-
-def form_results2():
-    # Zwrócone przez formularz, wysłane metodą HTTP POST na endpoint results i wrzucone do SQL wraz z dodanym obecnym datetime
-    # key:value , key = question_id, value=answer
-    return {
-        0: '2',
-        1: "ŻŹĆŃĄĘŁÓ"
-    }
-
-
 def get_all_plots_data():
     # dane do wykresu
     # kto to będzie robił musi sobie wymyślić w jakiej formie chce mieć dane, raczej tu nie ma ograniczeń
     #
     return {
-        "gender_pie_plot":{
+        "gender_pie_plot": {
             "male": 43.7,
             "female": 56.3
         },
@@ -75,4 +49,3 @@ def get_all_plots_data():
             "bi": 31.3
         }
     }
-
