@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Wyniki</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+          
+            google.charts.load('current', {packages: ['corechart'], 'language': 'pl'});
+            google.charts.setOnLoadCallback(drawChart);
+          
+            
+          
+            function drawChart() {
+              // Define the chart to be drawn.
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Odpowiedź');
+              data.addColumn('number', 'Ilość odpowiedzi');
+              data.addRows([
+                ['Tak', 5],
+                ['Nie', 3],
+                ['Nie wiem', 2]
+              ]);
+
+              var options = {'title':'Wyniki pytania 1: Czy poleciłbyś inż biomedyczna młodszemu koledze?',
+                //'is3D':true,
+                'legend': 'left',
+                'width':600,
+                'height':400};
+              
+          
+              // Instantiate and draw the chart.
+              var chart = new google.visualization.PieChart(document.getElementById('question1_chart'));
+                  chart.draw(data, options);
+            }
+          </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Front Page -->
+        <section class="section-1">
+            <div class="navbar-wrapper">
+                <nav class="navbar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Strona główna</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form.html" class="nav-link">Ankieta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="creators.html" class="nav-link">Twórcy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <!-- End of Front Page -->
+        <section class="section-2">
+          <body>
+          <!-- Identify where the chart should be drawn. -->
+          <div id="question1_chart"/>
+          </body>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="copyright">Webowa Druzyna &copy; All Rights Reserved</p>
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    <canvas class="background"></canvas>
+    <script src="/static/script.js"></script>
+    <script src="/static/particle/dist/particles.min.js"></script>
+</body>
+</html>
+
+
