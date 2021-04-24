@@ -27,25 +27,17 @@ class DBOperations():
         conn.close()
         return table
 
-    def get_all_answers(self):
+    def get_answer_types(self, question_id):
         conn = self.connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM dbo.answers;")
+        cursor.execute(("SELECT AnswerID, Answer FROM dbo.answer_types WHERE QuestionID = ?;"), question_id)
         table = cursor.fetchall()
         conn.close()
         return table
 
-    def add_answer(self, question_id, answer):
+    def add_answer(self, answer_id, timestamp):
         conn = self.connection()
         cursor = conn.cursor()
-        cursor.execute(("INSERT INTO dbo.answers VALUES(?, ?);"), (question_id, answer))
+        cursor.execute(("INSERT INTO dbo.answer_values(AnswerID, CreationTime) VALUES(?, ?);"), (answer_id, timestamp))
         conn.commit()
         conn.close()
-
-    def delete_answer(self, answer_id):
-        conn = self.connection()
-        cursor = conn.cursor()
-        cursor.execute(("DELETE FROM dbo.answers WHERE AnswerID=?;"), answer_id)
-        conn.commit()
-        conn.close()
-        
