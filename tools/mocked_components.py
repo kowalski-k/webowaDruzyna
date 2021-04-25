@@ -27,11 +27,8 @@ def get_form_source1():
 
 def form_results1():
     # Zwrócone przez formularz, wysłane metodą HTTP POST i wrzucone do SQL
-    # key:value , key = question_id, value=answer
-    return {
-        0: 2,
-        1: 3
-    }
+    # lista AnswerID z possible_answers
+    return [2, 3]
 
 
 def get_all_plots_data():
