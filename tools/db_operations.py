@@ -46,6 +46,8 @@ class DBOperations():
             current_question = next(question for question in questions if question["question_id"] == row_dict["QuestionID"])
             current_question["possible_answers"][row_dict["AnswerID"]] = row_dict["Answer"]
 
+        conn.close()
+
         return questions
 
     def submit_form_answers(self, answer_ids):
