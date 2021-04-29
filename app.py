@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 import os
+from tools.db_operations import DBOperations
 
 app = Flask(__name__)
+db = DBOperations()
 
 
 @app.route('/')
@@ -22,7 +24,14 @@ def creators():
 
 @app.route('/form.html')
 def form():
-    return render_template("form.html")
+    form_data = db.get_all_questions()
+    return render_template("form.html", data=form_data)
+
+
+@app.route('/sample.html')
+def sample():
+    form_data = db.get_all_questions()
+    return render_template("sample.html", data=form_data)
 
 
 if __name__ == "__main__":
