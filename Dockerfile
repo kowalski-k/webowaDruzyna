@@ -12,6 +12,9 @@ RUN pip install -r requirements.txt
 COPY app.py .
 COPY templates/ ./templates/
 COPY static/ ./static/
+COPY particle/ ./particle/
+COPY tools/ ./tools/
+COPY config.tmpl .
+COPY entrypoint.sh .
 EXPOSE "5000/tcp"
-ENTRYPOINT ["python"]
-CMD ["/opt/flaskapp/app.py"]
+ENTRYPOINT ["./entrypoint.sh"]
