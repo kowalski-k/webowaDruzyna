@@ -28,11 +28,5 @@ def form():
     return render_template("form.html", data=form_data)
 
 
-@app.route('/sample.html')
-def sample():
-    form_data = db.get_all_questions()
-    return render_template("sample.html", data=form_data)
-
-
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
