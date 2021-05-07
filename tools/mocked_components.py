@@ -16,11 +16,11 @@ def get_form_source1():
             "question_id": 0,
             "question_text": "Jak bardzo coś tam...",
             "possible_answers": {
-                0: '1',
-                1: '2',
-                2: '3',
-                3: '4',
-                4: '5'
+                4: '1',
+                5: '2',
+                6: '3',
+                7: '4',
+                8: '5'
             }
         }
     ]
