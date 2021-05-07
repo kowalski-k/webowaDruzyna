@@ -32,13 +32,8 @@
         </section>
         <!-- End of Front Page -->
         <section class="section-2-form">
+            <div id="mydiv" data-questions='{{ data|tojson }}'></div>
             <div class="questions" id="questions">
-                <div id="mydiv" data-questions='{{ data|tojson }}'></div>
-
-                 <!-- <div class="question" id="question2">
-                </div>
-                <div class="question" id="question3">
-                </div>    -->
             </div>
             <button class="next-btn q-button "><i class="fas fa-angle-double-right"></i>
             <button class="previous-btn q-button"><i class="fas fa-angle-double-left"></i></button>  
