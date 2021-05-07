@@ -32,13 +32,13 @@
         </section>
         <!-- End of Front Page -->
         <section class="section-2-form">
-            <div class="questions">
-                <div class="question" id="question1">
-                </div>
-                 <div class="question" id="question2">
+            <div class="questions" id="questions">
+                <div id="mydiv" data-questions='{{ data|tojson }}'></div>
+
+                 <!-- <div class="question" id="question2">
                 </div>
                 <div class="question" id="question3">
-                </div>   
+                </div>    -->
             </div>
             <button class="next-btn q-button "><i class="fas fa-angle-double-right"></i>
             <button class="previous-btn q-button"><i class="fas fa-angle-double-left"></i></button>  
@@ -56,6 +56,6 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    <script type="text/babel" src="/static/questions.js"></script>    
+    <script type="text/babel" src="/static/index.js"></script>    
 </body>
 </html>
