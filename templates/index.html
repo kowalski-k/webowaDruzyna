@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="/static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Ankieta</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <!-- Front Page -->
-        
-        <section class="section-1">
-            <div class="navbar-wrapper">
-                <nav class="navbar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link">Strona główna</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="form.html" class="nav-link">Ankieta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="creators.html" class="nav-link">Twórcy</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-        <!-- End of Front Page -->
-        <section class="section-2">
-            <div class="section-2-heading">
-                <h1>TUTAJ BĘDZIE OPIS ANKIETY, PO CO, DLACZEGO ITP.</h1>
-            </div>
-        </section>
-        <section class="section-3">
-            <div class="section-3-content">
-                <p class="section-3-paragraph">Przejdź do ankiety klikając poniższy przycisk.</p>
-                <button class="section-3-btn"><a href="form.html">Ankieta</a></button>
-            </div>
-        </section>
+      <!-- Front Page -->
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p class="copyright">Webowa Druzyna &copy; All Rights Reserved</p>
-        </footer>
-        <!-- End of Footer -->
+      <section class="section-1">
+        <div class="navbar-wrapper">
+          <nav class="navbar">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">Strona główna</a>
+              </li>
+              <li class="nav-item">
+                <a href="form.html" class="nav-link">Ankieta</a>
+              </li>
+              <li class="nav-item">
+                <a href="creators.html" class="nav-link">Twórcy</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+      <!-- End of Front Page -->
+      <section class="section-2">
+        <div class="section-2-heading">
+          <h1>TUTAJ BĘDZIE OPIS ANKIETY, PO CO, DLACZEGO ITP.</h1>
+        </div>
+      </section>
+      <section class="section-3">
+        <div class="section-3-content">
+          <p class="section-3-paragraph">
+            Przejdź do ankiety klikając poniższy przycisk.
+          </p>
+          <button class="section-3-btn"><a href="form.html">Ankieta</a></button>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p class="copyright">Webowa Druzyna &copy; All Rights Reserved</p>
+      </footer>
+      <!-- End of Footer -->
     </div>
     <canvas class="background"></canvas>
     <script src="/static/script.js"></script>
     <script src="/static/particle/dist/particles.min.js"></script>
-</body>
+  </body>
 </html>

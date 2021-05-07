@@ -1,3 +1,5 @@
 .idea/*
 venv/*
 config.ini
+node_modules
+tools/__pycache__/*
