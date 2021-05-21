@@ -1,8 +1,14 @@
 var questions = JSON.parse(document.getElementById("mydiv").dataset.questions);
+var answers_checked = {};
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
+    this.onValueChange = this.onValueChange.bind(this);
+  }
+
+  onValueChange(event) {
+    answers_checked[event.target.id] = event.target.value;
   }
 
   render() {
@@ -14,7 +20,13 @@ class Question extends React.Component {
             {Object.keys(this.props.answers).map((key) => {
               return (
                 <label key={key}>
-                  <input type="radio" name="rad" value={key} />
+                  <input
+                    type="radio"
+                    name="rad"
+                    value={key}
+                    id={this.props.id}
+                    onChange={this.onValueChange}
+                  />
                   <span>{this.props.answers[key]}</span>
                 </label>
               );
@@ -29,18 +41,54 @@ class Question extends React.Component {
 class Questions extends React.Component {
   constructor(props) {
     super(props);
+    this.formSubmit = this.formSubmit.bind(this);
+    this.addMovieHandler = this.addMovieHandler.bind(this);
+  }
+
+  formSubmit(event) {
+    event.preventDefault();
+
+    console.log(answers_checked);
+  }
+
+  addMovieHandler() {
+    fetch(
+      "https://webowadruzynatest-default-rtdb.firebaseio.com/answers.json",
+      {
+        method: "POST",
+        body: JSON.stringify(answers_checked),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   render() {
     return (
-      <div className="questions">
-        {questions.map((question) => (
-          <Question
-            key={question.question_id}
-            content={question.question_text}
-            answers={question.possible_answers}
-          />
-        ))}
+      <div className="all">
+        <div className="questions">
+          {questions.map((question) => (
+            <Question
+              key={question.question_id}
+              content={question.question_text}
+              answers={question.possible_answers}
+              id={question.question_id}
+            />
+          ))}
+        </div>
+        <input
+          type="submit"
+          className="submit_button"
+          onClick={this.addMovieHandler}
+        ></input>
       </div>
     );
   }

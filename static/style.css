@@ -228,6 +228,32 @@ h1 {
   opacity: 0.5;
   padding-right: 5rem;
 }
+
+.all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.submit_button {
+  margin: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+  width: 15rem;
+  height: 7rem;
+  background: #33b1f8;
+  color: #ededee;
+  border-radius: 2rem;
+  border: none;
+  transition: transform 0.1s;
+}
+
+.submit_button:hover {
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
 .rating_scale {
   display: block;
   text-align: center;
