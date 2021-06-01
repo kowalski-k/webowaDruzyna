@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 import os
 from tools.db_operations import DBOperations
 
@@ -26,6 +26,13 @@ def creators():
 def form():
     form_data = db.get_all_questions()
     return render_template("form.html", data=form_data)
+
+
+@app.route('/form_results', methods=['POST'])
+def form_results():
+    data = request.get_json()
+    db.submit_form_answers(data)
+    return jsonify(data)
 
 
 @app.route('/charts.html')
