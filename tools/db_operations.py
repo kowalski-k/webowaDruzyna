@@ -59,3 +59,20 @@ class DBOperations():
                            (answer_id, timestamp))
         conn.commit()
         conn.close()
+
+    def get_all_answers(self):
+        answers = []
+        query = '''
+                SELECT AnswerID, COUNT(AnswerID) AS Replies
+                FROM dbo.answer_values
+                GROUP BY AnswerID
+
+                '''
+
+        conn = self.connection()
+        cursor = conn.cursor()
+        cursor.execute(query)
+        answers = cursor.fetchall()
+        conn.close()
+
+        return answers
