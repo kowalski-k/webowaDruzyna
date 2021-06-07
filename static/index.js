@@ -42,7 +42,7 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.formSubmit = this.formSubmit.bind(this);
-    this.addMovieHandler = this.addMovieHandler.bind(this);
+    this.addAnswerHandler = this.addAnswerHandler.bind(this);
   }
 
   formSubmit(event) {
@@ -51,7 +51,7 @@ class Questions extends React.Component {
     console.log(answers_checked);
   }
 
-  addMovieHandler() {
+  addAnswerHandler() {
     fetch(
       "https://webowadruzynatest-default-rtdb.firebaseio.com/answers.json",
       {
@@ -87,8 +87,11 @@ class Questions extends React.Component {
         <input
           type="submit"
           className="submit_button"
-          onClick={this.addMovieHandler}
+          onClick={this.addAnswerHandler}
         ></input>
+        <a href="/results.html">
+          <button className="a_button">Zobacz Odpowiedzi</button>
+        </a>
       </div>
     );
   }

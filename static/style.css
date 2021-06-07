@@ -246,10 +246,30 @@ h1 {
   color: #ededee;
   border-radius: 2rem;
   border: none;
+  cursor: pointer;
   transition: transform 0.1s;
 }
 
 .submit_button:hover {
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
+.a_button {
+  margin: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+  width: 15rem;
+  height: 7rem;
+  background: #33b1f8;
+  color: #ededee;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.a_button:hover {
   transform: scale(1.1);
   opacity: 0.5;
 }
@@ -287,6 +307,30 @@ h1 {
 
 .rating_scale input[type="radio"]:checked ~ span {
   background: #f8c210;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* position: absolute;
+  bottom: 5rem;
+  right: 10rem;
+  left: 10rem; */
+}
+
+.answers_div {
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+  font-size: 20px;
+  font-weight: 100;
+  width: 20rem;
+  height: 7rem;
+  background: #062838;
+  color: #ededee;
+  border-radius: 3rem;
+  transition: transform 0.1s;
 }
 /* End of form HTML */
 
