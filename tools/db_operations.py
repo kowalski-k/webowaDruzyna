@@ -50,11 +50,29 @@ class DBOperations():
 
         return questions
 
-    def submit_form_answers(self, answer_ids):
+    def submit_form_answers(self, result_dict):
         conn = self.connection()
         cursor = conn.cursor()
         timestamp = datetime.now()
-        for answer_id in answer_ids:
-            cursor.execute(("INSERT INTO dbo.answer_values(AnswerID, CreationTime) VALUES(?, ?);"), (answer_id, timestamp))
+        for question_id, answer_id in result_dict.items():
+            cursor.execute(("INSERT INTO dbo.answer_values(AnswerID, CreationTime) VALUES(?, ?);"),
+                           (answer_id, timestamp))
         conn.commit()
         conn.close()
+
+    def get_all_answers(self):
+        answers = []
+        query = '''
+                SELECT AnswerID, COUNT(AnswerID) AS Replies
+                FROM dbo.answer_values
+                GROUP BY AnswerID
+
+                '''
+
+        conn = self.connection()
+        cursor = conn.cursor()
+        cursor.execute(query)
+        answers = cursor.fetchall()
+        conn.close()
+
+        return answers
