@@ -61,7 +61,7 @@ class DBOperations():
         conn.close()
 
     def get_all_answers(self):
-        answers = {}
+        answers = []
         query = '''
                 SELECT AnswerID, COUNT(AnswerID) AS Replies
                 FROM dbo.answer_values
@@ -72,7 +72,7 @@ class DBOperations():
         conn = self.connection()
         cursor = conn.cursor()
         cursor.execute(query)
-        answers = {id: count for id, count in cursor.fetchall()}
+        answers = [{id: count} for id, count in cursor.fetchall()]
         conn.close()
 
         return answers
