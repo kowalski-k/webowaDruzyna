@@ -35,6 +35,12 @@ h1 {
   font-size: 3rem;
   margin: 2rem;
 }
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
 /* End of Common */
 
 /* Section 1 */
@@ -100,10 +106,24 @@ h1 {
 /* Section 2 */
 .section-2 {
   width: 100%;
-  height: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+}
+
+.section-2-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-2-paragraph {
+  color: #ededee;
+  width: 65%;
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin: 10rem;
 }
 /* End of Section 2 */
 
@@ -123,7 +143,10 @@ h1 {
 }
 
 .section-3-paragraph {
-  font-size: 2rem;
+  color: #ededee;
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin: 2rem;
 }
 
 .section-3-btn {
@@ -157,6 +180,14 @@ h1 {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+}
+
+.all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 .questions {
   height: 100%;
@@ -228,6 +259,51 @@ h1 {
   opacity: 0.5;
   padding-right: 5rem;
 }
+
+.buttons {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.submit_button {
+  margin: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+  width: 15rem;
+  height: 7rem;
+  background: #33b1f8;
+  color: #ededee;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.submit_button:hover {
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
+.a_button {
+  margin: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+  width: 15rem;
+  height: 7rem;
+  background: #33b1f8;
+  color: #ededee;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.a_button:hover {
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
 .rating_scale {
   display: block;
   text-align: center;
@@ -244,7 +320,8 @@ h1 {
   margin: 0.5rem;
   font-size: 20px;
   font-weight: 100;
-  width: 4em;
+  width: auto;
+  padding: 1rem;
   background: #33b1f8;
   color: #ededee;
   border-radius: 5rem;
@@ -262,11 +339,39 @@ h1 {
 .rating_scale input[type="radio"]:checked ~ span {
   background: #f8c210;
 }
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* position: absolute;
+  bottom: 5rem;
+  right: 10rem;
+  left: 10rem; */
+}
+
+.answers_div {
+  align-items: center;
+  text-align: center;
+  margin: 0.5rem;
+  padding: 1rem;
+  font-size: 20px;
+  font-weight: 100;
+  min-width: 25rem;
+  width: auto;
+  height: auto;
+  background: #062838;
+  color: #ededee;
+  border-radius: 3rem;
+  transition: transform 0.1s;
+}
 /* End of form HTML */
 
 /* Footer */
 .footer {
   width: 100%;
+  position: absolute;
+  bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -276,7 +381,5 @@ h1 {
 .copyright {
   font-size: 2rem;
   color: #ededee;
-  position: absolute;
-  bottom: 2rem;
 }
 /* End of Footer */
