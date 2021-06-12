@@ -66,12 +66,12 @@ class DBOperations():
                 SELECT AnswerID, COUNT(AnswerID) AS Replies
                 FROM dbo.answer_values
                 GROUP BY AnswerID
-
                 '''
 
         conn = self.connection()
         cursor = conn.cursor()
         cursor.execute(query)
+
         answers = [{'question_id': id, 'count': count} for id, count in cursor.fetchall()]
         conn.close()
 

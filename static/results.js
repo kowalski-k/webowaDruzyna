@@ -1,38 +1,49 @@
 var questions = JSON.parse(document.getElementById("mydiv").dataset.questions);
+var questions_answers = JSON.parse(
+  document.getElementById("mydiv1").dataset.answers
+);
+
 var answers_checked = {};
-console.log(questions);
+let sum = 0;
+let i = 0;
+let key_count = 1;
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
-    this.onValueChange = this.onValueChange.bind(this);
-  }
-
-  onValueChange(event) {
-    answers_checked[event.target.id] = event.target.value;
   }
 
   render() {
     return (
       <div className="question" id="question">
         <p>{this.props.content}</p>
-        <div className="rating_scale">
-          <form>
-            {Object.keys(this.props.answers).map((key) => {
-              return (
-                <label key={key}>
-                  <input
-                    type="radio"
-                    name="rad"
-                    value={key}
-                    id={this.props.id}
-                    onChange={this.onValueChange}
-                  />
-                  <span>{this.props.answers[key]}</span>
-                </label>
-              );
-            })}
-          </form>
+        <div className="answers">
+          {Object.keys(this.props.answers).map((key, index) => {
+            console.log("KEY : " + key);
+            if (index == 0) sum = 0;
+            if (parseInt(key) == key_count) {
+              Object.keys(this.props.answers).map((key1, index1) => {
+                console.log("i: " + i);
+                sum += questions_answers[i].count;
+                i++;
+                key_count++;
+              });
+            }
+
+            return (
+              <label key={key}>
+                <div className="answers_div">
+                  Odpowiedź: {this.props.answers[key]} <br></br>
+                  {questions_answers.map((count) =>
+                    count.question_id == parseInt(key)
+                      ? Math.round((count.count / sum) * 1000) / 10 + "%"
+                      : null
+                  )}
+                  {console.log("SUMA" + sum)}
+                </div>
+              </label>
+            );
+          })}
         </div>
       </div>
     );
@@ -42,38 +53,14 @@ class Question extends React.Component {
 class Questions extends React.Component {
   constructor(props) {
     super(props);
-    this.formSubmit = this.formSubmit.bind(this);
-    this.addAnswerHandler = this.addAnswerHandler.bind(this);
-  }
-
-  formSubmit(event) {
-    event.preventDefault();
-
-    console.log(answers_checked);
-  }
-
-  addAnswerHandler() {
-    fetch("/form_results", {
-      method: "POST",
-      body: JSON.stringify(answers_checked),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
   }
 
   render() {
     return (
       <div className="all">
+        <div className="section-3-paragraph">Liczba odpowiedzi na pytanie:</div>
         <div className="questions">
-          {questions.map((question) => (
+          {questions.map((question, index) => (
             <Question
               key={question.question_id}
               content={question.question_text}
@@ -82,16 +69,9 @@ class Questions extends React.Component {
             />
           ))}
         </div>
-        <div className="buttons">
-          <input
-            type="submit"
-            className="submit_button"
-            onClick={this.addAnswerHandler}
-          ></input>
-          <a href="/results.html">
-            <button className="a_button">Zobacz Odpowiedzi</button>
-          </a>
-        </div>
+        <a href="/form.html">
+          <button className="a_button">Ankieta</button>
+        </a>
       </div>
     );
   }

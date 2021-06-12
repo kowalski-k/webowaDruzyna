@@ -17,11 +17,6 @@ def check_env_variables():
     return str(os.environ)
 
 
-@app.route('/creators.html')
-def creators():
-    return render_template("creators.html")
-
-
 @app.route('/form.html')
 def form():
     form_data = db.get_all_questions()
@@ -35,9 +30,16 @@ def form_results():
     return jsonify(data)
 
 
-@app.route('/charts.html')
-def charts():
-    return render_template("charts.html")
+@app.route('/results.html')
+def result():
+    form_data = db.get_all_questions()
+    form_answers = db.get_all_answers()
+    return render_template("results.html", data=form_data, answers=form_answers)
+
+@app.route('/best_results')
+def best_scores():
+    form_answers = db.get_all_answers()
+    return jsonify(form_answers)
 
 
 if __name__ == "__main__":
