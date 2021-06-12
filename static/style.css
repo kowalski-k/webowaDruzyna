@@ -383,3 +383,59 @@ h1 {
   color: #ededee;
 }
 /* End of Footer */
+
+@media (max-width: 1500px) {
+  .section-2-paragraph {
+    font-size: 2.5rem;
+    margin: 5rem;
+  }
+  .section-3-paragraph {
+    font-size: 2.5rem;
+    margin: 0.5rem;
+  }
+
+  .a_button {
+    margin: 1rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    width: 12rem;
+    height: 5rem;
+  }
+
+  .submit_button {
+    margin: 1rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    width: 12rem;
+    height: 5rem;
+  }
+  .question {
+    height: 50rem;
+  }
+  .question p {
+    font-size: 2rem;
+    margin: 1rem;
+  }
+
+  .next-btn {
+    right: 15%;
+  }
+  .previous-btn {
+    left: 15%;
+  }
+
+  .answers_div {
+    font-size: 1.5rem;
+  }
+  .rating_scale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rating_scale span {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+  }
+}
