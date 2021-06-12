@@ -71,7 +71,9 @@ class DBOperations():
         conn = self.connection()
         cursor = conn.cursor()
         cursor.execute(query)
-        answers = [{"question_id": id, "count": count} for id, count in cursor.fetchall()]
+
+        answers = [{'question_id': id, 'count': count} for id, count in cursor.fetchall()]
         conn.close()
 
         return answers
+        
